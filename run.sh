@@ -3,4 +3,5 @@
 url="$1"
 output="$2"
 
-python linkfinder.py -d -o cli -i $url > $output
+# Remove blank lines and status lines
+python linkfinder.py -d -o cli -i $url | sed '/^[[:space:]]*$/d' | sed '/^Running against:/ d' > $output
